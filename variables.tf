@@ -575,3 +575,18 @@ variable "create_kubernetes_resources" {
   type        = bool
   default     = true
 }
+
+################################################################################
+# FluxCD
+################################################################################
+variable "enable_fluxcd" {
+  description = "Enable Flux CD Kubernetes add-on"
+  type        = bool
+  default     = false
+}
+
+variable "fluxcd" {
+  description = "Chart values found here: https://artifacthub.io/packages/helm/fluxcd-community/flux2"
+  type        = any
+  default     = {}
+}

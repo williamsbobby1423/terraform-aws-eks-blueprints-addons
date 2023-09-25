@@ -95,6 +95,7 @@ module "eks_blueprints_addons" {
 | <a name="module_cluster_proportional_autoscaler"></a> [cluster\_proportional\_autoscaler](#module\_cluster\_proportional\_autoscaler) | aws-ia/eks-blueprints-addon/aws | 1.1.1 |
 | <a name="module_external_dns"></a> [external\_dns](#module\_external\_dns) | aws-ia/eks-blueprints-addon/aws | 1.1.1 |
 | <a name="module_external_secrets"></a> [external\_secrets](#module\_external\_secrets) | aws-ia/eks-blueprints-addon/aws | 1.1.1 |
+| <a name="module_fluxcd"></a> [fluxcd](#module\_fluxcd) | aws-ia/eks-blueprints-addon/aws | 1.1.1 |
 | <a name="module_gatekeeper"></a> [gatekeeper](#module\_gatekeeper) | aws-ia/eks-blueprints-addon/aws | 1.1.1 |
 | <a name="module_ingress_nginx"></a> [ingress\_nginx](#module\_ingress\_nginx) | aws-ia/eks-blueprints-addon/aws | 1.1.1 |
 | <a name="module_karpenter"></a> [karpenter](#module\_karpenter) | aws-ia/eks-blueprints-addon/aws | 1.1.1 |
@@ -198,6 +199,7 @@ module "eks_blueprints_addons" {
 | <a name="input_enable_external_dns"></a> [enable\_external\_dns](#input\_enable\_external\_dns) | Enable external-dns operator add-on | `bool` | `false` | no |
 | <a name="input_enable_external_secrets"></a> [enable\_external\_secrets](#input\_enable\_external\_secrets) | Enable External Secrets operator add-on | `bool` | `false` | no |
 | <a name="input_enable_fargate_fluentbit"></a> [enable\_fargate\_fluentbit](#input\_enable\_fargate\_fluentbit) | Enable Fargate FluentBit add-on | `bool` | `false` | no |
+| <a name="input_enable_fluxcd"></a> [enable\_fluxcd](#input\_enable\_fluxcd) | Enable Flux CD Kubernetes add-on | `bool` | `false` | no |
 | <a name="input_enable_gatekeeper"></a> [enable\_gatekeeper](#input\_enable\_gatekeeper) | Enable Gatekeeper add-on | `bool` | `false` | no |
 | <a name="input_enable_ingress_nginx"></a> [enable\_ingress\_nginx](#input\_enable\_ingress\_nginx) | Enable Ingress Nginx | `bool` | `false` | no |
 | <a name="input_enable_karpenter"></a> [enable\_karpenter](#input\_enable\_karpenter) | Enable Karpenter controller add-on | `bool` | `false` | no |
@@ -215,6 +217,7 @@ module "eks_blueprints_addons" {
 | <a name="input_external_secrets_ssm_parameter_arns"></a> [external\_secrets\_ssm\_parameter\_arns](#input\_external\_secrets\_ssm\_parameter\_arns) | List of Systems Manager Parameter ARNs that contain secrets to mount using External Secrets | `list(string)` | <pre>[<br>  "arn:aws:ssm:*:*:parameter/*"<br>]</pre> | no |
 | <a name="input_fargate_fluentbit"></a> [fargate\_fluentbit](#input\_fargate\_fluentbit) | Fargate fluentbit add-on config | `any` | `{}` | no |
 | <a name="input_fargate_fluentbit_cw_log_group"></a> [fargate\_fluentbit\_cw\_log\_group](#input\_fargate\_fluentbit\_cw\_log\_group) | AWS Fargate Fluentbit CloudWatch Log Group configurations | `any` | `{}` | no |
+| <a name="input_fluxcd"></a> [fluxcd](#input\_fluxcd) | Chart values found here: https://artifacthub.io/packages/helm/fluxcd-community/flux2 | `any` | `{}` | no |
 | <a name="input_gatekeeper"></a> [gatekeeper](#input\_gatekeeper) | Gatekeeper add-on configuration | `any` | `{}` | no |
 | <a name="input_helm_releases"></a> [helm\_releases](#input\_helm\_releases) | A map of Helm releases to create. This provides the ability to pass in an arbitrary map of Helm chart definitions to create | `any` | `{}` | no |
 | <a name="input_ingress_nginx"></a> [ingress\_nginx](#input\_ingress\_nginx) | Ingress Nginx add-on configurations | `any` | `{}` | no |

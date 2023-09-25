@@ -3613,3 +3613,54 @@ module "aws_gateway_api_controller" {
 
   tags = var.tags
 }
+
+module "fluxcd" {
+  source  = "aws-ia/eks-blueprints-addon/aws"
+  version = "1.1.1"
+
+  create = var.enable_fluxcd
+
+  # Disable helm release
+  create_release = var.create_kubernetes_resources
+
+  name             = try(var.fluxcd.name, "flux2")
+  description      = try(var.fluxcd.description, "A Helm chart to install the flux")
+  namespace        = try(var.fluxcd.namespace, "flux-system")
+  create_namespace = try(var.fluxcd.create_namespace, true)
+  chart            = "flux2"
+  chart_version    = try(var.fluxcd.chart_version, "2.8.0")
+  repository       = try(var.fluxcd.repository, "https://fluxcd-community.github.io/helm-charts")
+  values           = try(var.fluxcd.values, [])
+
+  timeout                    = try(var.fluxcd.timeout, null)
+  repository_key_file        = try(var.fluxcd.repository_key_file, null)
+  repository_cert_file       = try(var.fluxcd.repository_cert_file, null)
+  repository_ca_file         = try(var.fluxcd.repository_ca_file, null)
+  repository_username        = try(var.fluxcd.repository_username, null)
+  repository_password        = try(var.fluxcd.repository_password, null)
+  devel                      = try(var.fluxcd.devel, null)
+  verify                     = try(var.fluxcd.verify, null)
+  keyring                    = try(var.fluxcd.keyring, null)
+  disable_webhooks           = try(var.fluxcd.disable_webhooks, null)
+  reuse_values               = try(var.fluxcd.reuse_values, null)
+  reset_values               = try(var.fluxcd.reset_values, null)
+  force_update               = try(var.fluxcd.force_update, null)
+  recreate_pods              = try(var.fluxcd.recreate_pods, null)
+  cleanup_on_fail            = try(var.fluxcd.cleanup_on_fail, null)
+  max_history                = try(var.fluxcd.max_history, null)
+  atomic                     = try(var.fluxcd.atomic, null)
+  skip_crds                  = try(var.fluxcd.skip_crds, null)
+  render_subchart_notes      = try(var.fluxcd.render_subchart_notes, null)
+  disable_openapi_validation = try(var.fluxcd.disable_openapi_validation, null)
+  wait                       = try(var.fluxcd.wait, false)
+  wait_for_jobs              = try(var.fluxcd.wait_for_jobs, null)
+  dependency_update          = try(var.fluxcd.dependency_update, null)
+  replace                    = try(var.fluxcd.replace, null)
+  lint                       = try(var.fluxcd.lint, null)
+
+  postrender    = try(var.fluxcd.postrender, [])
+  set           = try(var.fluxcd.set, [])
+  set_sensitive = try(var.fluxcd.set_sensitive, [])
+
+  tags = var.tags
+}
